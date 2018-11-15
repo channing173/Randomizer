@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -46,23 +47,35 @@ public class RandomList
 
     }
 
+    File f = new File("matches.txt");
+    if (f.exists())
+    {
+      
+      f.delete();
+      
+    }
+    
+    PrintWriter writer = new PrintWriter("matches.txt");
+    
     for (int i = 0; i < names.size(); i++)
     {
 
       if (names.get(i).length() < 8)
       {
 
-        System.out.println(names.get(i) + "\t\t" + matches[i]);
+        writer.println(names.get(i) + "\t\t" + matches[i]);
 
       }
       else
       {
         
-        System.out.println(names.get(i) + "\t" + matches[i]);
+        writer.println(names.get(i) + "\t" + matches[i]);
         
       }
 
     }
+    
+    writer.close();
 
   }
 
